@@ -1,0 +1,21 @@
+.build_script: &build_script_base
+  # login to repo
+  - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+  # build image
+  - docker build -t ${CI_REGISTRY}/${CI_PROJECT_PATH}:latest ${WORK_DIR}
+  - docker build -t ${CI_REGISTRY}/${CI_PROJECT_PATH}:${CI_COMMIT_SHA} ${WORK_DIR}
+  # push 
+  - docker push ${CI_REGISTRY}/${CI_PROJECT_PATH}:latest
+  - docker push ${CI_REGISTRY}/${CI_PROJECT_PATH}:${CI_COMMIT_SHA} 
+
+stages:
+  - build
+
+build-image:
+  stage: build 
+  image: docker:latest
+  services:
+    - docker:dind
+  variables:
+    WORK_DIR: .
+  script: *build_script_base

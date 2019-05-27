@@ -11,8 +11,8 @@ RUN apk --purge -v del py-pip
 
 RUN rm /var/cache/apk/*
 
-COPY ./template.json /template.json
-COPY ./update.sh /entrypoint.sh
+COPY ./build_files/template.json /template.json
+COPY ./build_files/entrypoint.sh /entrypoint.sh
 
 RUN chmod +x /entrypoint.sh
 
