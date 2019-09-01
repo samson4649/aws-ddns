@@ -68,7 +68,7 @@ fi
 
 BUF=$(mktemp)
 
-sed "s/__COMMENT__/$COMMENT/" a_template.json > "$BUF"
+sed "s/__COMMENT__/$COMMENT/" template.json > "$BUF"
 sed -i "s/__DOMAIN__/$DOMAIN/" "$BUF"
 sed -i "s/__IPADDR__/$IPADDR/" "$BUF"
 
