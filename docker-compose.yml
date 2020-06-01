@@ -1,0 +1,7 @@
+---
+version: "3.8"
+services:
+  lab:
+    image: golang:1-alpine
+    volumes:
+      - ./src:/go/src/gitlab.monarch-ares.io/containers/aws-ddns
