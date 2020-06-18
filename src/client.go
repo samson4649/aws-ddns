@@ -19,10 +19,3 @@ func NewClient( ctx *context.Context, auth *Auth ) ( *Client, error ) {
   }, nil
 }
 
-func (c *Client) Do( request *http.Request ) {
-
-}
-
-func (c *Client) Test() string {
-  return "test working"
-}
